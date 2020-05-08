@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1003988501479",
+    "firebase_url": "https://calculavirus.firebaseio.com",
+    "project_id": "calculavirus",
+    "storage_bucket": "calculavirus.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1003988501479:android:2685866f9b67daaba7b342",
+        "android_client_info": {
+          "package_name": "com.calculaVirusApp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1003988501479-3cmndiposq148akh1tlfq08a8uo3aeug.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.calculaVirusApp",
+            "certificate_hash": "d819e88a702e3fd0f2a393c73e419cb1c48e857a"
+          }
+        },
+        {
+          "client_id": "1003988501479-j28qpm4pt4k335aq91lnvfn79l3t85rn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC_D2ms2edW3ZAxMlMFKP6idHsKx2Ra0LQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1003988501479-j28qpm4pt4k335aq91lnvfn79l3t85rn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
