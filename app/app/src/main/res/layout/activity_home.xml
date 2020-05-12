@@ -5,33 +5,37 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".HomeActivity">
+
     <include
         android:id="@+id/toolbar"
-        layout="@layout/toolbar"/>
-    <Button
-        android:id="@+id/sign_out_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="36dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:text="Cerrar Sesión"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        layout="@layout/toolbar" />
 
     <LinearLayout
         android:layout_width="409dp"
         android:layout_height="562dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="84dp"
+        android:layout_marginBottom="85dp"
         android:gravity="center"
+        android:minHeight="400dp"
         android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/sign_out_button"
-        tools:layout_editor_absoluteX="1dp">
+        app:layout_constrainedHeight="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Lugares de Compra"
+            android:textSize="20dp" />
 
 
         <android.support.v7.widget.RecyclerView
+            android:id="@+id/placesList"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="506dp" />
 
     </LinearLayout>
 
