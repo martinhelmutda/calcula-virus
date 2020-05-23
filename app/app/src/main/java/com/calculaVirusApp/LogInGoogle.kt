@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import com.calculaVirusApp.LogInGoogle.Companion.getLaunchIntent
 import com.google.android.gms.auth.api.signin.GoogleSignIn
@@ -29,6 +30,11 @@ class LogInGoogle : AppCompatActivity() {
         setContentView(R.layout.activity_log_in_google)
         configureGoogleSignIn()
         setupUI()
+
+        gotochecklist.setOnClickListener({
+            intent = Intent(this,ChecklistActivity::class.java)
+            startActivity(intent)
+        })
     }
 
     private fun configureGoogleSignIn() {
