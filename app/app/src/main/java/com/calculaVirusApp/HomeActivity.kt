@@ -4,22 +4,59 @@ import android.content.Context
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.widget.DividerItemDecoration
+import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.OrientationHelper
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import com.androidnetworking.AndroidNetworking
+import com.androidnetworking.error.ANError
+import com.androidnetworking.interfaces.ParsedRequestListener
+import com.calculaVirusApp.adapters.PlaceAdapter
+import com.calculaVirusApp.model.Place
+import com.calculaVirusApp.model.Request
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_home.*
 
 class HomeActivity : AppCompatActivity() {
 
+    private val dataList: MutableList<Place> = mutableListOf()
+    private lateinit var placeAdapter: PlaceAdapter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
-        setupUI()
-        setSupportActionBar(findViewById(R.id.toolbar));
+        setSupportActionBar(findViewById(R.id.toolbar))
+        //Set up Adapter
+        placeAdapter = PlaceAdapter(dataList)
+
+        //Set Up recyclerview
+        placesList.layoutManager = LinearLayoutManager(this)
+        placesList.addItemDecoration(DividerItemDecoration(this, OrientationHelper.VERTICAL))
+        placesList.adapter = placeAdapter
+
+        //Set up Android Networking
+        AndroidNetworking.initialize(this)
+        AndroidNetworking.get("http://192.168.1.70:8000/lugares/")
+            .build()
+            .getAsObject(Request::class.java, object : ParsedRequestListener<Request> {
+                override fun onResponse(response: Request?) {
+                    response?.results?.let { dataList.addAll(it) }
+                    placeAdapter.notifyDataSetChanged()
+                    Log.d("Algo llego", response.toString())
+                }
+
+                override fun onError(anError: ANError?) {
+                    Log.e("NetworkError",anError.toString())
+                }
+
+            })
+        Log.d("Bandera","Se han terminado los set ups")
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.action_bar_menu, menu);
+        menuInflater.inflate(R.menu.action_bar_menu, menu)
         menu?.findItem(R.id.toolbar)?.title = "Calcula virus"
         return true
     }
@@ -30,15 +67,9 @@ class HomeActivity : AppCompatActivity() {
         }
         return super.onOptionsItemSelected(item)
     }
-
-    private fun setupUI() {
-        sign_out_button.setOnClickListener {
-            signOut()
-        }
-    }
     private fun signOut() {
         startActivity(LogInGoogle.getLaunchIntent(this))
-        FirebaseAuth.getInstance().signOut();
+        FirebaseAuth.getInstance().signOut()
     }
 
     companion object {
