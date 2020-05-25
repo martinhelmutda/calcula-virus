@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import com.calculaVirusApp.LogInGoogle.Companion.getLaunchIntent
+import com.calculaVirusApp.model.Insumo
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -33,6 +34,11 @@ class LogInGoogle : AppCompatActivity() {
 
         gotochecklist.setOnClickListener({
             intent = Intent(this,ChecklistActivity::class.java)
+            startActivity(intent)
+        })
+
+        gotoinsumos.setOnClickListener({
+            intent = Intent(this,InsumoActivity::class.java)
             startActivity(intent)
         })
     }

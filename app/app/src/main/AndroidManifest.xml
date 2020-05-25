@@ -11,9 +11,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ChecklistDetailActivity"></activity>
-        <activity android:name=".ChecklistActivity">
-        </activity>
+        <activity android:name=".CrearInsumoActivity"></activity>
+        <activity android:name=".InsumoDetailActivity" />
+        <activity android:name=".InsumoActivity" />
+        <activity android:name=".ChecklistDetailActivity" />
+        <activity android:name=".ChecklistActivity" />
         <activity android:name=".HomeActivity" />
         <activity android:name=".LogInGoogle">
             <intent-filter>
