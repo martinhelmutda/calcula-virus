@@ -32,15 +32,6 @@ class LogInGoogle : AppCompatActivity() {
         configureGoogleSignIn()
         setupUI()
 
-        gotochecklist.setOnClickListener({
-            intent = Intent(this,ChecklistActivity::class.java)
-            startActivity(intent)
-        })
-
-        gotoinsumos.setOnClickListener({
-            intent = Intent(this,InsumoActivity::class.java)
-            startActivity(intent)
-        })
     }
 
     private fun configureGoogleSignIn() {

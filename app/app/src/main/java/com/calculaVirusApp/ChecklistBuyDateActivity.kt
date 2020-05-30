@@ -20,7 +20,9 @@ class ChecklistBuyDateActivity : AppCompatActivity() {
             .build()
             .getAsObject(FechaCompra::class.java,object: ParsedRequestListener<FechaCompra> {
                 override fun onResponse(response: FechaCompra?) {
-                    fecha_proxima_compra.text = ""+response!!.buy_date
+                    //fecha_proxima_compra.text = ""+response!!.buy_date
+                    val d = response!!.buy_date
+                    fecha_compra_picker.updateDate(1900+d.year,d.month,d.date)
                 }
 
                 override fun onError(anError: ANError?) {

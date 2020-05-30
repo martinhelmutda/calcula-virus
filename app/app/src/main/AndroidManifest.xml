@@ -17,7 +17,8 @@
         <activity android:name=".InsumoActivity" />
         <activity android:name=".ChecklistDetailActivity" />
         <activity android:name=".ChecklistActivity" />
-        <activity android:name=".HomeActivity" />
+        <activity android:name=".HomeActivity">
+        </activity>
         <activity android:name=".LogInGoogle">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
