@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CrearInsumoActivity"></activity>
+        <activity android:name=".ChecklistBuyDateActivity"></activity>
+        <activity android:name=".CrearInsumoActivity" />
         <activity android:name=".InsumoDetailActivity" />
         <activity android:name=".InsumoActivity" />
         <activity android:name=".ChecklistDetailActivity" />

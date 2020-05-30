@@ -65,6 +65,7 @@ class CrearInsumoActivity : AppCompatActivity() {
                 .addMultipartParameter("prioridad",prioridad_insumo_crear.text.toString())
                 .addMultipartParameter("duracion_promedio",duracion_insumo_crear.text.toString())
                 .addMultipartParameter("cantidad",cantidad_insumo_detail_crear.text.toString())
+                .addMultipartParameter("user_id","1")
                 .addMultipartFile("image",null)
                 //.setPriority(Priority.HIGH)
                 .build()
@@ -77,8 +78,22 @@ class CrearInsumoActivity : AppCompatActivity() {
                         Log.e("NetworkError",anError.toString())
                     }
                 })
-            val intent = Intent(this,InsumoActivity::class.java)
-            this.startActivity(intent)
+            AndroidNetworking.post("http://192.168.1.84:8000/checklistinsumo/create_insumo_row/")
+                .addBodyParameter("user_id","1")
+                .addBodyParameter("lugar_compra",lugar_name)
+                .addBodyParameter("insumo_nombre",nombre_insumo_crear.text.toString())
+                .build()
+                .getAsObject(RequestInsumo::class.java,object:
+                    ParsedRequestListener<RequestInsumo> {
+                    override fun onResponse(response: RequestInsumo?) {
+                    }
+
+                    override fun onError(anError: ANError?) {
+                        Log.e("NetworkError",anError.toString())
+                    }
+                })
+            /*val intent = Intent(this,InsumoActivity::class.java)
+            this.startActivity(intent)*/
         }
     }
 }

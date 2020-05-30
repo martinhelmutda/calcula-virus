@@ -15,6 +15,7 @@ import com.androidnetworking.interfaces.ParsedRequestListener
 import com.calculaVirusApp.model.ChecklistInsumo
 import com.calculaVirusApp.model.RequestChecklistInsumo
 import kotlinx.android.synthetic.main.checklist_insumo_row.view.*
+import java.util.*
 
 class ChecklistDetailAdapter(private val datalist:MutableList<ChecklistInsumo>) : RecyclerView.Adapter<ChecklistInsumoHolder>() {
     private lateinit var context: Context
@@ -39,10 +40,11 @@ class ChecklistDetailAdapter(private val datalist:MutableList<ChecklistInsumo>) 
         check_point.text = insumo_nombre
         check_point.isChecked = data.comprado
         p0?.id_checklistinsumo=data.id
+        p0?.insumo_id = data.insumo_id
     }
 }
 
-class ChecklistInsumoHolder(val view: View, var id_checklistinsumo: Int?=0): RecyclerView.ViewHolder(view){
+class ChecklistInsumoHolder(val view: View, var id_checklistinsumo: Int?=0,var insumo_id: Int?=0): RecyclerView.ViewHolder(view){
     init {
         view.checked_box.setOnClickListener{
             var cantidad: String = "0"
@@ -54,7 +56,7 @@ class ChecklistInsumoHolder(val view: View, var id_checklistinsumo: Int?=0): Rec
                 view.cantidad_insumo_editar.setText("0")
             }
             AndroidNetworking.initialize(view.context)
-            AndroidNetworking.put("http://192.168.1.84:8000/checklistinsumo/"+id_checklistinsumo.toString()+"/")
+            AndroidNetworking.put("http://192.168.1.84:8000/checklistinsumo/"+id_checklistinsumo.toString()+"/update_info/")
                 .addBodyParameter("cantidad",cantidad)
                 .addBodyParameter("comprado",view.checked_box.isChecked.toString())
                 .build()
@@ -67,11 +69,25 @@ class ChecklistInsumoHolder(val view: View, var id_checklistinsumo: Int?=0): Rec
                         Log.e("NetworkError",anError.toString())
                     }
                 })
+            if(view.checked_box.isChecked){
+                AndroidNetworking.post("http://192.168.1.84:8000/insumos/"+insumo_id.toString()+"/change_buy_date/")
+                    .addBodyParameter("new_date", Date().toString())
+                    .build()
+                    .getAsObject(RequestChecklistInsumo::class.java,object:
+                        ParsedRequestListener<RequestChecklistInsumo> {
+                        override fun onResponse(response: RequestChecklistInsumo?) {
+                        }
+
+                        override fun onError(anError: ANError?) {
+                            Log.e("NetworkError",anError.toString())
+                        }
+                    })
+            }
         }
         view.cantidad_insumo_editar.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(p0: Editable?) {
                 AndroidNetworking.initialize(view.context)
-                AndroidNetworking.put("http://192.168.1.84:8000/checklistinsumo/"+id_checklistinsumo.toString()+"/")
+                AndroidNetworking.put("http://192.168.1.84:8000/checklistinsumo/"+id_checklistinsumo.toString()+"/update_info/")
                     .addBodyParameter("cantidad",view.cantidad_insumo_editar.text.toString())
                     .addBodyParameter("comprado",view.checked_box.isChecked.toString())
                     .build()

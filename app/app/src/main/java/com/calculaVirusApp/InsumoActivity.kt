@@ -11,6 +11,7 @@ import com.androidnetworking.interfaces.ParsedRequestListener
 import com.calculaVirusApp.model.Insumo
 import com.calculaVirusApp.model.RequestChecklist
 import com.calculaVirusApp.model.RequestInsumo
+import com.google.android.gms.auth.api.signin.GoogleSignIn
 import kotlinx.android.synthetic.main.activity_insumo.*
 
 class InsumoActivity : AppCompatActivity() {
@@ -20,12 +21,18 @@ class InsumoActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_insumo)
+        val account = GoogleSignIn.getLastSignedInAccount(this)
+        var user_email="barrons.guillermo.sal@gmail.com"
+        if(account!=null){
+            user_email = account.email!!
+        }
         recycler_insumo.layoutManager = LinearLayoutManager(this)
         insumoAdapter = InsumoAdapter(datalist)
         recycler_insumo.adapter = insumoAdapter
 
         AndroidNetworking.initialize(this)
-        AndroidNetworking.get("http://192.168.1.84:8000/insumos")
+        AndroidNetworking.get("http://192.168.1.84:8000/insumos/get_insumo_by_user/")
+            .addQueryParameter("user_email",user_email)
             .build().getAsObject(RequestInsumo::class.java,object:
                 ParsedRequestListener<RequestInsumo> {
                 override fun onResponse(response: RequestInsumo?) {
