@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import com.calculaVirusApp.LogInGoogle.Companion.getLaunchIntent
+import com.calculaVirusApp.model.Insumo
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -31,10 +32,6 @@ class LogInGoogle : AppCompatActivity() {
         configureGoogleSignIn()
         setupUI()
 
-        gotochecklist.setOnClickListener({
-            intent = Intent(this,ChecklistActivity::class.java)
-            startActivity(intent)
-        })
     }
 
     private fun configureGoogleSignIn() {
@@ -64,6 +61,7 @@ class LogInGoogle : AppCompatActivity() {
                     firebaseAuthWithGoogle(account)
                 }
             } catch (e: ApiException) {
+                Log.e("Fail",""+e)
                 Toast.makeText(this, "Google sign in failed:(", Toast.LENGTH_LONG).show()
             }
         }

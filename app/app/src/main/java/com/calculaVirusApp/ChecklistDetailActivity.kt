@@ -1,5 +1,6 @@
 package com.calculaVirusApp
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
@@ -46,5 +47,10 @@ class ChecklistDetailActivity : AppCompatActivity() {
                     Log.e("NetworkError",anError.toString())
                 }
             })
+        button_proxima_compra.setOnClickListener({
+            var intent = Intent(this,ChecklistBuyDateActivity::class.java)
+            intent.putExtra("checklist_id", checklist_id)
+            this.startActivity(intent)
+        })
     }
 }

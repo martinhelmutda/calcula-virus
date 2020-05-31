@@ -35,6 +35,15 @@ class HomeActivity : AppCompatActivity() {
         placesList.layoutManager = LinearLayoutManager(this)
         placesList.addItemDecoration(DividerItemDecoration(this, OrientationHelper.VERTICAL))
         placesList.adapter = placeAdapter
+        gotochecklist.setOnClickListener({
+            intent = Intent(this,ChecklistActivity::class.java)
+            startActivity(intent)
+        })
+
+        gotoinsumos.setOnClickListener({
+            intent = Intent(this,InsumoActivity::class.java)
+            startActivity(intent)
+        })
 
         //Set up Android Networking
         AndroidNetworking.initialize(this)

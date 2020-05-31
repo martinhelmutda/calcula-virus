@@ -24,6 +24,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Checklists"
+            android:id="@+id/gotochecklist"
+            android:layout_marginTop="80dp"
+            />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Insumos"
+            android:id="@+id/gotoinsumos"
+            />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
