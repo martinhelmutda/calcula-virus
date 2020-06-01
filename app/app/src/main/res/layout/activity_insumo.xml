@@ -5,17 +5,40 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".InsumoActivity">
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Crear insumo"
-        android:id="@+id/crear_insumo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
-    <android.support.v7.widget.RecyclerView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="506dp"
-        android:id="@+id/recycler_insumo"
+        android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent"
+        android:orientation="vertical">
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Crear insumo"
+            android:id="@+id/crear_insumo"/>
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:id="@+id/recycler_insumo"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ordenar por prioridad"
+            android:id="@+id/orden_prioridad"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ordenar por cantidad"
+            android:id="@+id/orden_cantidad"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ordenar por caducidad"
+            android:id="@+id/orden_caducidad"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Organizar por categoría"
+            android:id="@+id/orden_categoria"/>
+    </LinearLayout>
 </android.support.constraint.ConstraintLayout>

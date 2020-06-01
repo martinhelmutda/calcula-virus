@@ -13,5 +13,6 @@ data class Insumo (
     var prioridad: Int,
     var duracion_promedio: Int,
     var cantidad: String,
-    var marca:String
+    var marca:String,
+    var image:String
 )

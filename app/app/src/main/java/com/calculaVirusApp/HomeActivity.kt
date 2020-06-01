@@ -42,6 +42,7 @@ class HomeActivity : AppCompatActivity() {
 
         gotoinsumos.setOnClickListener({
             intent = Intent(this,InsumoActivity::class.java)
+            intent.putExtra("query_type", 1)
             startActivity(intent)
         })
 
