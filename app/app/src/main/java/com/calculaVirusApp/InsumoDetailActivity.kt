@@ -18,6 +18,7 @@ import com.calculaVirusApp.model.Insumo
 import com.calculaVirusApp.model.LugarCompra
 import com.calculaVirusApp.model.RequestInsumo
 import com.calculaVirusApp.model.RequestLugarCompra
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_insumo_detail.*
 import java.util.*
 
@@ -80,6 +81,7 @@ class InsumoDetailActivity : AppCompatActivity() {
                     else{
                         lugar_compra_insumo_editar.setSelection(3)
                     }
+                    Picasso.get().load(insumo_detail.image).into(photo_insumo_editar)
                 }
 
                 override fun onError(anError: ANError?) {
