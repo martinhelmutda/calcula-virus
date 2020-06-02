@@ -10,48 +10,51 @@
         android:id="@+id/toolbar"
         layout="@layout/toolbar" />
 
-    <LinearLayout
-        android:layout_width="409dp"
-        android:layout_height="562dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="84dp"
-        android:layout_marginBottom="85dp"
-        android:gravity="center"
-        android:minHeight="400dp"
-        android:orientation="vertical"
-        app:layout_constrainedHeight="false"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Checklists"
-            android:id="@+id/gotochecklist"
-            android:layout_marginTop="80dp"
-            />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Insumos"
-            android:id="@+id/gotoinsumos"
-            />
-
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="1dp"
+            android:layout_marginTop="84dp"
+            android:layout_marginBottom="85dp"
             android:gravity="center"
-            android:text="Lugares de Compra"
-            android:textSize="20dp" />
+            android:minHeight="400dp"
+            android:orientation="vertical"
+            app:layout_constrainedHeight="false">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:gravity="center"
+                android:text="Lugares de Compra"
+                android:textSize="20sp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/placesList"
+                android:layout_width="match_parent"
+                android:layout_height="316dp"
+                android:background="#00FFFFFF"
+                android:backgroundTint="#00FFFFFF" />
+
+            <Button
+                android:id="@+id/gotochecklist"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="80dp"
+                android:text="Checklists" />
+
+            <Button
+                android:id="@+id/gotoinsumos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Insumos" />
 
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/placesList"
-            android:layout_width="match_parent"
-            android:layout_height="506dp" />
-
-    </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

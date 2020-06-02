@@ -35,7 +35,7 @@ class PlaceAdapter (private val dataList:MutableList<Place>): RecyclerView.Adapt
             .into(img)
 
         holder.itemView.setOnClickListener(){
-            Toast.makeText(context,data.descripcion,Toast.LENGTH_LONG).show()
+            Toast.makeText(context,data.descripcion,Toast.LENGTH_SHORT).show()
         }
     }
 }

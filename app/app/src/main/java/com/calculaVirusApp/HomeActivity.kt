@@ -46,16 +46,16 @@ class HomeActivity : AppCompatActivity() {
             )
         )
         placesList.adapter = placeAdapter
-        gotochecklist.setOnClickListener({
+        gotochecklist.setOnClickListener {
             intent = Intent(this,ChecklistActivity::class.java)
             startActivity(intent)
-        })
+        }
 
-        gotoinsumos.setOnClickListener({
+        gotoinsumos.setOnClickListener {
             intent = Intent(this,InsumoActivity::class.java)
             intent.putExtra("query_type", 1)
             startActivity(intent)
-        })
+        }
 
         //Set up Android Networking
         AndroidNetworking.initialize(this)
@@ -82,20 +82,14 @@ class HomeActivity : AppCompatActivity() {
             val email = user.email
             val parts = email!!.replace("@","")
 
-            if (parts != null) {
-                Log.d("User", parts)
-                FirebaseMessaging.getInstance().subscribeToTopic(parts)
-                    .addOnCompleteListener { task ->
-                        var msg = getString(R.string.msg_subscribed)
-                        if (!task.isSuccessful) {
-                            msg = getString(R.string.msg_subscribe_failed)
-                        }
-                        Log.d(TAG, msg)
+            FirebaseMessaging.getInstance().subscribeToTopic(parts)
+                .addOnCompleteListener { task ->
+                    var msg = getString(R.string.msg_subscribed)
+                    if (!task.isSuccessful) {
+                        msg = getString(R.string.msg_subscribe_failed)
                     }
-            } else {
-                Toast.makeText(baseContext,"Email not found", Toast.LENGTH_SHORT).show()
-            }
-
+                    Log.d(TAG, msg)
+                }
         }
     }
 

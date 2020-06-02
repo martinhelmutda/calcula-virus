@@ -12,4 +12,7 @@
     <string name="msg_subscribed">Successful subscription</string>
     <string name="msg_subscribe_failed">Error at susbscribing on Firebase</string>
     <string name="default_notification_channel_id">GeneralChannel</string>
+    <string name="place_image_content_desc">Place Image</string>
+    <string name="place_name">Nombre</string>
+    <string name="quatintity_place">Quantity:</string>
 </resources>
