@@ -80,10 +80,11 @@ class HomeActivity : AppCompatActivity() {
         val user = FirebaseAuth.getInstance().currentUser
         user?.let {
             val email = user.email
-            val parts = email!!.split("@")
+            val parts = email!!.replace("@","")
 
-            if (parts[0] != null) {
-                FirebaseMessaging.getInstance().subscribeToTopic(parts[0])
+            if (parts != null) {
+                Log.d("User", parts)
+                FirebaseMessaging.getInstance().subscribeToTopic(parts)
                     .addOnCompleteListener { task ->
                         var msg = getString(R.string.msg_subscribed)
                         if (!task.isSuccessful) {
