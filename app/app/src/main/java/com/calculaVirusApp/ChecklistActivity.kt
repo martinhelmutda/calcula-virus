@@ -1,8 +1,8 @@
 package com.calculaVirusApp
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.LinearLayoutManager
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import android.util.Log
 import com.androidnetworking.AndroidNetworking
 import com.androidnetworking.error.ANError
@@ -26,7 +26,8 @@ class ChecklistActivity : AppCompatActivity() {
         if(account!=null){
             user_email = account.email!!
         }
-        recycler_checklist.layoutManager = LinearLayoutManager(this)
+        recycler_checklist.layoutManager =
+            LinearLayoutManager(this)
         checklistAdapter = ChecklistAdapter(datalist)
         recycler_checklist.adapter = checklistAdapter
 

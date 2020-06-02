@@ -2,14 +2,15 @@ package com.calculaVirusApp
 
 import android.content.Context
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.support.v7.widget.DividerItemDecoration
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.OrientationHelper
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.OrientationHelper
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
 import com.androidnetworking.AndroidNetworking
 import com.androidnetworking.error.ANError
 import com.androidnetworking.interfaces.ParsedRequestListener
@@ -17,6 +18,7 @@ import com.calculaVirusApp.adapters.PlaceAdapter
 import com.calculaVirusApp.model.Place
 import com.calculaVirusApp.model.Request
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.messaging.FirebaseMessaging
 import kotlinx.android.synthetic.main.activity_home.*
 
 class HomeActivity : AppCompatActivity() {
@@ -28,12 +30,21 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
         setSupportActionBar(findViewById(R.id.toolbar))
+        // Set up Notifications
+        setUpUserChannel()
+
         //Set up Adapter
         placeAdapter = PlaceAdapter(dataList)
 
         //Set Up recyclerview
-        placesList.layoutManager = LinearLayoutManager(this)
-        placesList.addItemDecoration(DividerItemDecoration(this, OrientationHelper.VERTICAL))
+        placesList.layoutManager =
+            LinearLayoutManager(this)
+        placesList.addItemDecoration(
+            DividerItemDecoration(
+                this,
+                OrientationHelper.VERTICAL
+            )
+        )
         placesList.adapter = placeAdapter
         gotochecklist.setOnClickListener({
             intent = Intent(this,ChecklistActivity::class.java)
@@ -63,6 +74,28 @@ class HomeActivity : AppCompatActivity() {
 
             })
         Log.d("Bandera","Se han terminado los set ups")
+    }
+
+    fun setUpUserChannel() {
+        val user = FirebaseAuth.getInstance().currentUser
+        user?.let {
+            val email = user.email
+            val parts = email!!.split("@")
+
+            if (parts[0] != null) {
+                FirebaseMessaging.getInstance().subscribeToTopic(parts[0])
+                    .addOnCompleteListener { task ->
+                        var msg = getString(R.string.msg_subscribed)
+                        if (!task.isSuccessful) {
+                            msg = getString(R.string.msg_subscribe_failed)
+                        }
+                        Log.d(TAG, msg)
+                    }
+            } else {
+                Toast.makeText(baseContext,"Email not found", Toast.LENGTH_SHORT).show()
+            }
+
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

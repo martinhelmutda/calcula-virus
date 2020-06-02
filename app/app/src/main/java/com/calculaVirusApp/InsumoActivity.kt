@@ -1,9 +1,9 @@
 package com.calculaVirusApp
 
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.support.v7.widget.LinearLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import android.util.Log
 import com.androidnetworking.AndroidNetworking
 import com.androidnetworking.error.ANError
@@ -26,7 +26,8 @@ class InsumoActivity : AppCompatActivity() {
         if(account!=null){
             user_email = account.email!!
         }
-        recycler_insumo.layoutManager = LinearLayoutManager(this)
+        recycler_insumo.layoutManager =
+            LinearLayoutManager(this)
         insumoAdapter = InsumoAdapter(datalist)
         recycler_insumo.adapter = insumoAdapter
 

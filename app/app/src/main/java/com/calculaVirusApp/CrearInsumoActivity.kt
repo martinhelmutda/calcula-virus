@@ -6,7 +6,7 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.net.Uri
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
@@ -62,7 +62,7 @@ class CrearInsumoActivity : AppCompatActivity() {
                 Date(fecha_caducidad_crear.year,fecha_caducidad_crear.month,fecha_caducidad_crear.dayOfMonth)
             //val img = photo_insumo.drawable
             val lugar_name =lugar_compra_insumo_crear.selectedItem.toString()
-            var lugar_id = 0
+            lateinit var lugar_id: Number
             if(lugar_name=="Supermercado"){
                 lugar_id=1
             }
