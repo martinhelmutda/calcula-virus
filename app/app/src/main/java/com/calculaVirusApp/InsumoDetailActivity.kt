@@ -3,11 +3,12 @@ package com.calculaVirusApp
 import android.content.Intent
 import android.os.AsyncTask
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import android.util.Log
+import android.view.Menu
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import androidx.appcompat.app.AppCompatActivity
 import com.androidnetworking.AndroidNetworking
 import com.androidnetworking.common.ANRequest
 import com.androidnetworking.common.ANResponse
@@ -108,5 +109,11 @@ class InsumoDetailActivity : AppCompatActivity() {
             val intent = Intent(this,InsumoActivity::class.java)
             this.startActivity(intent)
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.action_bar_menu, menu)
+        menu?.findItem(R.id.toolbar)?.title = "Calcula virus"
+        return true
     }
 }

@@ -2,14 +2,14 @@ package com.calculaVirusApp
 
 import android.content.Context
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.support.v7.widget.DividerItemDecoration
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.OrientationHelper
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.OrientationHelper
 import com.androidnetworking.AndroidNetworking
 import com.androidnetworking.error.ANError
 import com.androidnetworking.interfaces.ParsedRequestListener
@@ -35,16 +35,16 @@ class HomeActivity : AppCompatActivity() {
         placesList.layoutManager = LinearLayoutManager(this)
         placesList.addItemDecoration(DividerItemDecoration(this, OrientationHelper.VERTICAL))
         placesList.adapter = placeAdapter
-        gotochecklist.setOnClickListener({
+        gotochecklist.setOnClickListener {
             intent = Intent(this,ChecklistActivity::class.java)
             startActivity(intent)
-        })
+        }
 
-        gotoinsumos.setOnClickListener({
+        gotoinsumos.setOnClickListener {
             intent = Intent(this,InsumoActivity::class.java)
             intent.putExtra("query_type", 1)
             startActivity(intent)
-        })
+        }
 
         //Set up Android Networking
         AndroidNetworking.initialize(this)

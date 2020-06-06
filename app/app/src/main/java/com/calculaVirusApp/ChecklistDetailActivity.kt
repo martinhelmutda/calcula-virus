@@ -1,10 +1,11 @@
 package com.calculaVirusApp
 
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
+import android.view.Menu
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.androidnetworking.AndroidNetworking
 import com.androidnetworking.error.ANError
 import com.androidnetworking.interfaces.ParsedRequestListener
@@ -24,7 +25,7 @@ class ChecklistDetailActivity : AppCompatActivity() {
         setContentView(R.layout.activity_checklist_detail)
         setSupportActionBar(findViewById(R.id.toolbar))
         val checklist_id: Int = intent.getIntExtra("checklist_id",1)
-        recycler_checklist_detail.layoutManager=LinearLayoutManager(this)
+        recycler_checklist_detail.layoutManager= LinearLayoutManager(this)
         checklist_detailAdapter = ChecklistDetailAdapter(datalist)
         recycler_checklist_detail.adapter = checklist_detailAdapter
 
@@ -48,10 +49,15 @@ class ChecklistDetailActivity : AppCompatActivity() {
                     Log.e("NetworkError",anError.toString())
                 }
             })
-        button_proxima_compra.setOnClickListener({
+        button_proxima_compra.setOnClickListener {
             var intent = Intent(this,ChecklistBuyDateActivity::class.java)
             intent.putExtra("checklist_id", checklist_id)
             this.startActivity(intent)
-        })
+        }
+    }
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.action_bar_menu, menu)
+        menu?.findItem(R.id.toolbar)?.title = "Calcula virus"
+        return true
     }
 }
