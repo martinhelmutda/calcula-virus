@@ -2,10 +2,10 @@ package com.calculaVirusApp
 
 import android.content.Context
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.calculaVirusApp.LogInGoogle.Companion.getLaunchIntent
 import com.calculaVirusApp.model.Insumo
 import com.google.android.gms.auth.api.signin.GoogleSignIn

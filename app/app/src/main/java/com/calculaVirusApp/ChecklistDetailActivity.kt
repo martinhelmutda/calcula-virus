@@ -1,10 +1,10 @@
 package com.calculaVirusApp
 
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.androidnetworking.AndroidNetworking
 import com.androidnetworking.error.ANError
 import com.androidnetworking.interfaces.ParsedRequestListener
@@ -23,7 +23,7 @@ class ChecklistDetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_checklist_detail)
         val checklist_id: Int = intent.getIntExtra("checklist_id",1)
-        recycler_checklist_detail.layoutManager=LinearLayoutManager(this)
+        recycler_checklist_detail.layoutManager= LinearLayoutManager(this)
         checklist_detailAdapter = ChecklistDetailAdapter(datalist)
         recycler_checklist_detail.adapter = checklist_detailAdapter
 
