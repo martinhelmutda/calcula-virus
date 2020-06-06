@@ -5,6 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".CrearInsumoActivity">
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar" />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -13,11 +16,18 @@
         android:orientation="vertical">
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Crear Insumo"
+                    android:textSize="40dp"
+                    android:textAlignment="center"/>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -118,6 +128,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Guardar"
+                    android:layout_marginBottom="5dp"
+                    android:background="@color/colorPrimary"
                     android:id="@+id/button_guardar_insumo_crear"/>
             </LinearLayout>
         </ScrollView>

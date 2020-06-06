@@ -21,6 +21,7 @@ class ChecklistActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_checklist)
+        setSupportActionBar(findViewById(R.id.toolbar))
         val account = GoogleSignIn.getLastSignedInAccount(this)
         var user_email="barrons.guillermo.sal@gmail.com"
         if(account!=null){

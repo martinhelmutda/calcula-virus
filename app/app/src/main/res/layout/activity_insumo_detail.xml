@@ -5,6 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".InsumoDetailActivity">
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar" />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -13,11 +16,18 @@
         android:orientation="vertical">
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Editar Insumo"
+                    android:textSize="40dp"
+                    android:textAlignment="center"/>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -105,11 +115,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Lugar de compra"/>
-                <Spinner
-                    android:id="@+id/lugar_compra_insumo_editar"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    />
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -118,11 +123,17 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Guardar"
+                    android:background="@color/green"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="5dp"
                     android:id="@+id/button_guardar_insumo_editar"/>
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Eliminar"
+                    android:background="@color/red"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="5dp"
                     android:id="@+id/button_eliminar_insumo"/>
             </LinearLayout>
         </ScrollView>

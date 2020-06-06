@@ -22,6 +22,7 @@ class ChecklistDetailActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_checklist_detail)
+        setSupportActionBar(findViewById(R.id.toolbar))
         val checklist_id: Int = intent.getIntExtra("checklist_id",1)
         recycler_checklist_detail.layoutManager=LinearLayoutManager(this)
         checklist_detailAdapter = ChecklistDetailAdapter(datalist)

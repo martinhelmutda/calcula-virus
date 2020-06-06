@@ -5,40 +5,73 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".InsumoActivity">
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar" />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="60dp"
         android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textSize="40dp"
+            android:text="Insumos"
+            />
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Crear insumo"
+            android:background="@color/colorPrimary"
             android:id="@+id/crear_insumo"/>
         <android.support.v7.widget.RecyclerView
             android:layout_width="match_parent"
-            android:layout_height="400dp"
+            android:layout_height="380dp"
             android:id="@+id/recycler_insumo"/>
-        <Button
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <Button
+                android:layout_width="177dp"
+                android:layout_height="wrap_content"
+                android:text="Ordenar por prioridad"
+                android:background="@color/colorPrimaryDark"
+                android:textColor="@color/white"
+                android:layout_marginLeft="5dp"
+                android:id="@+id/orden_prioridad"/>
+            <Button
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:text="Organizar por categoría"
+                android:background="@color/colorPrimaryDark"
+                android:layout_marginLeft="5dp"
+                android:textColor="@color/white"
+                android:id="@+id/orden_categoria"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Ordenar por prioridad"
-            android:id="@+id/orden_prioridad"/>
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Ordenar por cantidad"
-            android:id="@+id/orden_cantidad"/>
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Ordenar por caducidad"
-            android:id="@+id/orden_caducidad"/>
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Organizar por categoría"
-            android:id="@+id/orden_categoria"/>
+            android:layout_marginTop="5dp">
+            <Button
+                android:layout_width="177dp"
+                android:layout_height="wrap_content"
+                android:text="Ordenar por cantidad"
+                android:background="@color/colorPrimaryDark"
+                android:textColor="@color/white"
+                android:layout_marginLeft="5dp"
+                android:id="@+id/orden_cantidad"/>
+            <Button
+                android:layout_width="187dp"
+                android:layout_height="wrap_content"
+                android:text="Ordenar por caducidad"
+                android:background="@color/colorPrimaryDark"
+                android:layout_marginLeft="5dp"
+                android:textColor="@color/white"
+                android:id="@+id/orden_caducidad"/>
+        </LinearLayout>
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>
