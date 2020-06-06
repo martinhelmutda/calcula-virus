@@ -1,9 +1,10 @@
 package com.calculaVirusApp
 
 import android.os.Bundle
+import android.util.Log
+import android.view.Menu
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import android.util.Log
 import com.androidnetworking.AndroidNetworking
 import com.androidnetworking.error.ANError
 import com.androidnetworking.interfaces.ParsedRequestListener
@@ -21,6 +22,7 @@ class ChecklistActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_checklist)
+        setSupportActionBar(findViewById(R.id.toolbar))
         val account = GoogleSignIn.getLastSignedInAccount(this)
         var user_email="barrons.guillermo.sal@gmail.com"
         if(account!=null){
@@ -55,5 +57,11 @@ class ChecklistActivity : AppCompatActivity() {
                     Log.e("NetworkError",anError.toString())
                 }
             })
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.action_bar_menu, menu)
+        menu?.findItem(R.id.toolbar)?.title = "Calcula virus"
+        return true
     }
 }

@@ -1,10 +1,11 @@
 package com.calculaVirusApp
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.recyclerview.widget.LinearLayoutManager
 import android.util.Log
+import android.view.Menu
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.androidnetworking.AndroidNetworking
 import com.androidnetworking.error.ANError
 import com.androidnetworking.interfaces.ParsedRequestListener
@@ -21,6 +22,7 @@ class InsumoActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_insumo)
+        setSupportActionBar(findViewById(R.id.toolbar))
         val account = GoogleSignIn.getLastSignedInAccount(this)
         var user_email="barrons.guillermo.sal@gmail.com"
         if(account!=null){
@@ -31,44 +33,44 @@ class InsumoActivity : AppCompatActivity() {
         insumoAdapter = InsumoAdapter(datalist)
         recycler_insumo.adapter = insumoAdapter
 
-        orden_prioridad.setOnClickListener({
+        orden_prioridad.setOnClickListener {
             val intent = Intent(this,InsumoActivity::class.java)
             intent.putExtra("query_type", 2)
             startActivity(intent)
-        })
-        orden_caducidad.setOnClickListener({
+        }
+        orden_caducidad.setOnClickListener {
             val intent = Intent(this,InsumoActivity::class.java)
             intent.putExtra("query_type", 3)
             startActivity(intent)
-        })
-        orden_cantidad.setOnClickListener({
+        }
+        orden_cantidad.setOnClickListener {
             val intent = Intent(this,InsumoActivity::class.java)
             intent.putExtra("query_type", 4)
             startActivity(intent)
-        })
-        orden_categoria.setOnClickListener({
+        }
+        orden_categoria.setOnClickListener {
             val intent = Intent(this,InsumoActivity::class.java)
             intent.putExtra("query_type", 5)
             startActivity(intent)
-        })
+        }
 
         val query_type: Int = intent.getIntExtra("query_type",1)
         AndroidNetworking.initialize(this)
         var url = ""
         if(query_type==1){
-            url = "http://192.168.1.84:8000/insumos/get_insumo_by_user/"
+            url = "http://192.168.1.84:8000/insumos/get_insumos_by_user/"
         }
         else if(query_type==2){
-            url = "http://192.168.1.84:8000/insumos/get_insumo_by_priority/"
+            url = "http://192.168.1.84:8000/insumos/get_insumos_by_priority/"
         }
         else if(query_type==3){
-            url = "http://192.168.1.84:8000/insumos/get_insumo_by_quantity/"
+            url = "http://192.168.1.84:8000/insumos/get_insumos_by_quantity/"
         }
         else if(query_type==4){
-            url = "http://192.168.1.84:8000/insumos/get_insumo_by_due_date/"
+            url = "http://192.168.1.84:8000/insumos/get_insumos_by_due_date/"
         }
         else if(query_type==5){
-            url = "http://192.168.1.84:8000/insumos/get_insumo_by_category/"
+            url = "http://192.168.1.84:8000/insumos/get_insumos_by_category/"
         }
         AndroidNetworking.get(url)
             .addQueryParameter("user_email",user_email)
@@ -83,9 +85,15 @@ class InsumoActivity : AppCompatActivity() {
                     Log.e("NetworkError",anError.toString())
                 }
             })
-        crear_insumo.setOnClickListener({
+        crear_insumo.setOnClickListener {
             val intent = Intent(this,CrearInsumoActivity::class.java)
             this.startActivity(intent)
-        })
+        }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.action_bar_menu, menu)
+        menu?.findItem(R.id.toolbar)?.title = "Calcula virus"
+        return true
     }
 }
