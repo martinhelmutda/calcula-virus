@@ -14,6 +14,7 @@ class ChecklistBuyDateActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_checklist_buy_date)
+        setSupportActionBar(findViewById(R.id.toolbar))
         val checklist_id: Int = intent.getIntExtra("checklist_id",1)
         AndroidNetworking.initialize(this)
         AndroidNetworking.get("http://192.168.1.84:8000/checklist/"+checklist_id+"/get_buy_date")
