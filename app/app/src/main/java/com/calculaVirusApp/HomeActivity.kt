@@ -35,20 +35,20 @@ class HomeActivity : AppCompatActivity() {
         placesList.layoutManager = LinearLayoutManager(this)
         placesList.addItemDecoration(DividerItemDecoration(this, OrientationHelper.VERTICAL))
         placesList.adapter = placeAdapter
-        gotochecklist.setOnClickListener({
+        gotochecklist.setOnClickListener {
             intent = Intent(this,ChecklistActivity::class.java)
             startActivity(intent)
-        })
+        }
 
-        gotoinsumos.setOnClickListener({
+        gotoinsumos.setOnClickListener {
             intent = Intent(this,InsumoActivity::class.java)
             intent.putExtra("query_type", 1)
             startActivity(intent)
-        })
+        }
 
         //Set up Android Networking
         AndroidNetworking.initialize(this)
-        AndroidNetworking.get("http://192.168.1.70:8000/lugares/")
+        AndroidNetworking.get("http://192.168.1.84:8000/lugares/")
             .build()
             .getAsObject(Request::class.java, object : ParsedRequestListener<Request> {
                 override fun onResponse(response: Request?) {

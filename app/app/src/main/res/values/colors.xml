@@ -6,4 +6,6 @@
     <color name="colorSecondAccent">#d89f10</color>
     <color name="white">#FBFBFB</color>
     <color name="black">#242424</color>
+    <color name="red">#D21404</color>
+    <color name="green">#06A10B</color>
 </resources>
