@@ -21,13 +21,13 @@
         <activity android:name=".ChecklistDetailActivity" />
         <activity android:name=".ChecklistActivity" />
         <activity android:name=".HomeActivity">
+        </activity>
+        <activity android:name=".LogInGoogle">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity android:name=".LogInGoogle">
         </activity>
     </application>
 
