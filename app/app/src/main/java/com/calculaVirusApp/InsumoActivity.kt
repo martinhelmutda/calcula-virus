@@ -28,7 +28,8 @@ class InsumoActivity : AppCompatActivity() {
         if(account!=null){
             user_email = account.email!!
         }
-        recycler_insumo.layoutManager = LinearLayoutManager(this)
+        recycler_insumo.layoutManager =
+            LinearLayoutManager(this)
         insumoAdapter = InsumoAdapter(datalist)
         recycler_insumo.adapter = insumoAdapter
 

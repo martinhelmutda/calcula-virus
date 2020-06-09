@@ -39,15 +39,15 @@ class ChecklistDetailAdapter(private val datalist:MutableList<ChecklistInsumo>) 
         val check_point = p0.itemView.checked_box
         check_point.text = insumo_nombre
         check_point.isChecked = data.comprado
-        p0?.id_checklistinsumo=data.id
-        p0?.insumo_id = data.insumo_id
+        p0.id_checklistinsumo=data.id
+        p0.insumo_id = data.insumo_id
     }
 }
 
 class ChecklistInsumoHolder(val view: View, var id_checklistinsumo: Int?=0,var insumo_id: Int?=0): RecyclerView.ViewHolder(view){
     init {
         view.checked_box.setOnClickListener{
-            var cantidad: String = "0"
+            lateinit var cantidad: String
             if(!view.checked_box.isChecked){
                 cantidad = view.cantidad_insumo_editar.text.toString()
             }

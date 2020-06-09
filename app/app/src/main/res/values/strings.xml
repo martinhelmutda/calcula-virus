@@ -9,4 +9,10 @@
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
+    <string name="msg_subscribed">Successful subscription</string>
+    <string name="msg_subscribe_failed">Error at susbscribing on Firebase</string>
+    <string name="default_notification_channel_id">GeneralChannel</string>
+    <string name="place_image_content_desc">Place Image</string>
+    <string name="place_name">Nombre</string>
+    <string name="quatintity_place">Quantity:</string>
 </resources>
