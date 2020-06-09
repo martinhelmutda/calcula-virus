@@ -28,7 +28,8 @@ class ChecklistActivity : AppCompatActivity() {
         if(account!=null){
             user_email = account.email!!
         }
-        recycler_checklist.layoutManager = LinearLayoutManager(this)
+        recycler_checklist.layoutManager =
+            LinearLayoutManager(this)
         checklistAdapter = ChecklistAdapter(datalist)
         recycler_checklist.adapter = checklistAdapter
 
