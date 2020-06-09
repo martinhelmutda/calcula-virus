@@ -48,7 +48,7 @@ class HomeActivity : AppCompatActivity() {
 
         //Set up Android Networking
         AndroidNetworking.initialize(this)
-        AndroidNetworking.get("http://192.168.1.84:8000/lugares/")
+        AndroidNetworking.get("http://martinhelmut.pythonanywhere.com/lugares/")
             .build()
             .getAsObject(Request::class.java, object : ParsedRequestListener<Request> {
                 override fun onResponse(response: Request?) {

@@ -30,7 +30,7 @@ class ChecklistDetailActivity : AppCompatActivity() {
         recycler_checklist_detail.adapter = checklist_detailAdapter
 
         AndroidNetworking.initialize(this)
-        AndroidNetworking.get("http://192.168.1.84:8000/checklistinsumo/")
+        AndroidNetworking.get("http://martinhelmut.pythonanywhere.com/checklistinsumo/")
             .build().getAsObject(RequestChecklistInsumo::class.java,object:
                 ParsedRequestListener<RequestChecklistInsumo> {
                 override fun onResponse(response: RequestChecklistInsumo?) {

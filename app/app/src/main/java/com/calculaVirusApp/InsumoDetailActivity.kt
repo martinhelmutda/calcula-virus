@@ -30,7 +30,7 @@ class InsumoDetailActivity : AppCompatActivity() {
         val insumo_id: Int = intent.getIntExtra("insumo_id",1)
 
 
-        AndroidNetworking.get("http://192.168.1.84:8000/insumos/"+insumo_id)
+        AndroidNetworking.get("http://martinhelmut.pythonanywhere.com/insumos/"+insumo_id)
             .build().getAsObject(Insumo::class.java,object:
                 ParsedRequestListener<Insumo> {
                 override fun onResponse(response: Insumo?) {
@@ -62,7 +62,7 @@ class InsumoDetailActivity : AppCompatActivity() {
             val send_date=Date(fecha_caducidad_editar.year,fecha_caducidad_editar.month,fecha_caducidad_editar.dayOfMonth)
             var lugar_id = 0
             AndroidNetworking.initialize(this)
-            AndroidNetworking.upload("http://192.168.1.84:8000/insumos/"+insumo_id.toString()+"/")
+            AndroidNetworking.upload("http://martinhelmut.pythonanywhere.com/insumos/"+insumo_id.toString()+"/")
                 .addMultipartParameter("id",insumo_id.toString())
                 .addMultipartParameter("nombre",nombre_insumo_editar.text.toString())
                 .addMultipartParameter("marca",marca_insumo_editar.text.toString())
@@ -93,7 +93,7 @@ class InsumoDetailActivity : AppCompatActivity() {
 
         button_eliminar_insumo.setOnClickListener{
             AndroidNetworking.initialize(this)
-            AndroidNetworking.upload("http://192.168.1.84:8000/insumos/"+(insumo_id+10000).toString()+"/")
+            AndroidNetworking.upload("http://martinhelmut.pythonanywhere.com/insumos/"+(insumo_id+10000).toString()+"/")
                 .addMultipartParameter("id",insumo_id.toString())
                 .setPriority(Priority.HIGH)
                 .build()

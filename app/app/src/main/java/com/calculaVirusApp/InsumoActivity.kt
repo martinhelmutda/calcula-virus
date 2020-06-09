@@ -57,19 +57,19 @@ class InsumoActivity : AppCompatActivity() {
         AndroidNetworking.initialize(this)
         var url = ""
         if(query_type==1){
-            url = "http://192.168.1.84:8000/insumos/get_insumos_by_user/"
+            url = "http://martinhelmut.pythonanywhere.com/insumos/get_insumos_by_user/"
         }
         else if(query_type==2){
-            url = "http://192.168.1.84:8000/insumos/get_insumos_by_priority/"
+            url = "http://martinhelmut.pythonanywhere.com/insumos/get_insumos_by_priority/"
         }
         else if(query_type==3){
-            url = "http://192.168.1.84:8000/insumos/get_insumos_by_quantity/"
+            url = "http://martinhelmut.pythonanywhere.com/insumos/get_insumos_by_quantity/"
         }
         else if(query_type==4){
-            url = "http://192.168.1.84:8000/insumos/get_insumos_by_due_date/"
+            url = "http://martinhelmut.pythonanywhere.com/insumos/get_insumos_by_due_date/"
         }
         else if(query_type==5){
-            url = "http://192.168.1.84:8000/insumos/get_insumos_by_category/"
+            url = "http://martinhelmut.pythonanywhere.com/insumos/get_insumos_by_category/"
         }
         AndroidNetworking.get(url)
             .addQueryParameter("user_email",user_email)

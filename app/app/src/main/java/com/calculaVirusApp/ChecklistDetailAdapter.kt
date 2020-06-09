@@ -56,7 +56,7 @@ class ChecklistInsumoHolder(val view: View, var id_checklistinsumo: Int?=0,var i
                 view.cantidad_insumo_editar.setText("0")
             }
             AndroidNetworking.initialize(view.context)
-            AndroidNetworking.put("http://192.168.1.84:8000/checklistinsumo/"+id_checklistinsumo.toString()+"/update_info/")
+            AndroidNetworking.put("http://martinhelmut.pythonanywhere.com/checklistinsumo/"+id_checklistinsumo.toString()+"/update_info/")
                 .addBodyParameter("cantidad",cantidad)
                 .addBodyParameter("comprado",view.checked_box.isChecked.toString())
                 .build()
@@ -70,7 +70,7 @@ class ChecklistInsumoHolder(val view: View, var id_checklistinsumo: Int?=0,var i
                     }
                 })
             if(view.checked_box.isChecked){
-                AndroidNetworking.post("http://192.168.1.84:8000/insumos/"+insumo_id.toString()+"/change_buy_date/")
+                AndroidNetworking.post("http://martinhelmut.pythonanywhere.com/insumos/"+insumo_id.toString()+"/change_buy_date/")
                     .addBodyParameter("new_date", Date().toString())
                     .build()
                     .getAsObject(RequestChecklistInsumo::class.java,object:
@@ -87,7 +87,7 @@ class ChecklistInsumoHolder(val view: View, var id_checklistinsumo: Int?=0,var i
         view.cantidad_insumo_editar.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(p0: Editable?) {
                 AndroidNetworking.initialize(view.context)
-                AndroidNetworking.put("http://192.168.1.84:8000/checklistinsumo/"+id_checklistinsumo.toString()+"/update_info/")
+                AndroidNetworking.put("http://martinhelmut.pythonanywhere.com/checklistinsumo/"+id_checklistinsumo.toString()+"/update_info/")
                     .addBodyParameter("cantidad",view.cantidad_insumo_editar.text.toString())
                     .addBodyParameter("comprado",view.checked_box.isChecked.toString())
                     .build()
