@@ -2,7 +2,8 @@ package com.calculaVirusApp.model
 
 data class Place(
     val descripcion: String,
-    val img: String,
+    val image: String,
     val nombre: String,
-    val id: Int
+    val id: Int,
+    val user: String
 )

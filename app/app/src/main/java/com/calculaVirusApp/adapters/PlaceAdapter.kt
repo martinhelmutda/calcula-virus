@@ -31,7 +31,7 @@ class PlaceAdapter (private val dataList:MutableList<Place>): RecyclerView.Adapt
         qty.text = "Quantity: n/a"
 
         Picasso.get()
-            .load(data.img)
+            .load(data.image)
             .into(img)
 
         holder.itemView.setOnClickListener(){
