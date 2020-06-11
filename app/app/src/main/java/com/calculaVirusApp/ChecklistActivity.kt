@@ -34,7 +34,7 @@ class ChecklistActivity : AppCompatActivity() {
         recycler_checklist.adapter = checklistAdapter
 
         AndroidNetworking.initialize(this)
-        /*AndroidNetworking.get("http://192.168.1.84:8000/checklist")
+        /*AndroidNetworking.get("http://martinhelmut.pythonanywhere.com/checklist")
             .build().getAsObject(RequestChecklist::class.java,object: ParsedRequestListener<RequestChecklist>{
                 override fun onResponse(response: RequestChecklist?) {
                     response?.results?.let{datalist.addAll(it)}
@@ -45,7 +45,7 @@ class ChecklistActivity : AppCompatActivity() {
                     Log.e("NetworkError",anError.toString())
                 }
             })*/
-        AndroidNetworking.get("http://192.168.1.84:8000/checklist/get_checklist_by_user/")
+        AndroidNetworking.get("http://martinhelmut.pythonanywhere.com/checklist/get_checklist_by_user/")
             .addQueryParameter("user_email",user_email)
             .build().getAsObject(RequestChecklist::class.java,object: ParsedRequestListener<RequestChecklist>{
                 override fun onResponse(response: RequestChecklist?) {

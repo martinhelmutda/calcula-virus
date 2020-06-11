@@ -18,7 +18,7 @@ class ChecklistBuyDateActivity : AppCompatActivity() {
         setSupportActionBar(findViewById(R.id.toolbar))
         val checklist_id: Int = intent.getIntExtra("checklist_id",1)
         AndroidNetworking.initialize(this)
-        AndroidNetworking.get("http://192.168.1.84:8000/checklist/"+checklist_id+"/get_buy_date")
+        AndroidNetworking.get("http://martinhelmut.pythonanywhere.com/checklist/"+checklist_id+"/get_buy_date")
             .build()
             .getAsObject(FechaCompra::class.java,object: ParsedRequestListener<FechaCompra> {
                 override fun onResponse(response: FechaCompra?) {

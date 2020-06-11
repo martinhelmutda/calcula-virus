@@ -44,7 +44,7 @@ class CrearInsumoActivity : AppCompatActivity() {
         val places = mutableListOf<String>()
         val places_id = mutableMapOf<String,Int>()
         AndroidNetworking.initialize(this)
-        AndroidNetworking.get("http://192.168.1.84:8000/lugares")
+        AndroidNetworking.get("http://martinhelmut.pythonanywhere.com/lugares")
             .addQueryParameter("user_email",user_email)
             .build()
             .getAsObject(Request::class.java, object : ParsedRequestListener<Request> {
@@ -88,7 +88,7 @@ class CrearInsumoActivity : AppCompatActivity() {
             val lugar_name =lugar_compra_insumo_crear.selectedItem.toString()
             var lugar_id = places_id[lugar_name]
             AndroidNetworking.initialize(this)
-            AndroidNetworking.upload("http://192.168.1.84:8000/insumos/"+0+"/")
+            AndroidNetworking.upload("http://martinhelmut.pythonanywhere.com/insumos/"+0+"/")
                 .addMultipartParameter("nombre",nombre_insumo_crear.text.toString())
                 .addMultipartParameter("marca",marca_insumo_crear.text.toString())
                 .addMultipartParameter("descripcion",descripcion_insumo_crear.text.toString())
@@ -114,7 +114,7 @@ class CrearInsumoActivity : AppCompatActivity() {
                         Log.e("NetworkError",anError.toString())
                     }
                 })
-            AndroidNetworking.post("http://192.168.1.84:8000/checklistinsumo/create_insumo_row/")
+            AndroidNetworking.post("http://martinhelmut.pythonanywhere.com/checklistinsumo/create_insumo_row/")
                 .addBodyParameter("user_id","1")
                 .addBodyParameter("user_email",user_email)
                 .addBodyParameter("lugar_compra",lugar_name)
